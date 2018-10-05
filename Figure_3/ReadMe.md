@@ -6,6 +6,8 @@ Using your command prompt go to the directory you have installed AMPL.
 
 Run the following commands in the command prompt
 
+./ampl
+
 model AOIZ.mod;           
 
 data AOIZ.dat;
