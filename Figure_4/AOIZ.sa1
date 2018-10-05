@@ -1,0 +1,39 @@
+option solver './snopt';
+set SV := {1};
+param Entropy{i in SV};
+param CodeLength{i in SV};
+param TiltedEntropy{i in SV};
+param AvgAge{i in SV};
+param PAvgAge{i in SV};
+param LBAvgAge{i in SV};
+param UBAvgAge{i in SV};
+param PShannonAge{i in SV};
+param CheckOptimal{i in SV};
+param CheckP{i in SV};
+param CheckTD{i in SV};
+
+param Formatting{i in SV}= '&';
+param Formatting_2{i in SV}= '\\';
+for{a in SV}{
+let S := a;
+solve;
+let Entropy[a] := entropy;
+let TiltedEntropy[a] := tiltedentropy;
+let CodeLength[a] := codelength;
+let AvgAge[a] := avgage;
+let PAvgAge[a] := pracavgage;
+let LBAvgAge[a] := 1.5*entropy-0.5;
+let UBAvgAge[a] := 1.5*entropy  + vare/(2*entropy)-0.5;
+let PShannonAge[a]:= pshannonage;
+let CheckOptimal[a]:=check_optimal;
+let CheckP[a]:=sum_p;
+let CheckTD[a]:=sum_td;
+
+
+}
+display p;
+display tilteddistribution;
+
+
+table A4 OUT: [SV], Entropy, TiltedEntropy, CodeLength, AvgAge, PAvgAge, LBAvgAge, UBAvgAge,PShannonAge, CheckOptimal, CheckP  ;
+write table A4;
