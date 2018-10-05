@@ -1,9 +1,0 @@
-
-data;
-
-for{b in {1..cardinality-1}}{
-                    let  p[b] := 1/(8*(cardinality-1));
-                    
-                    }
-    let p[cardinality] := 1-1/(8);
-   

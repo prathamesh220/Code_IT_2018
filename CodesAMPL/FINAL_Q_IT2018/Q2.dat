@@ -1,9 +1,0 @@
-data;
-
-
-param cardinality := 256;
-
-for{a in I_1}{
-let  p[a] := 1/(2*255);
-}
-let p[cardinality] := 1-255/(2*255);
