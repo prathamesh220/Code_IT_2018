@@ -1,5 +1,5 @@
-option solver './conopt';
-set SV := { 0.03,0.06,0.09,0.12,0.15};
+option solver './snopt';
+set SV := {0, 0.5,1,1.5,2,2.5,3,3.5,4,4.5,5};
 param Entropy{i in SV};
 param CodeLength{i in SV};
 param TiltedEntropy{i in SV};
@@ -11,27 +11,25 @@ param PShannonAge{i in SV};
 param CheckOptimal{i in SV};
 param CheckP{i in SV};
 param CheckTD{i in SV};
-param epsilon=0;
 
 param Formatting{i in SV}= '&';
 param Formatting_2{i in SV}= '\\';
 for{a in SV}{
-let mu := a;
+let S := a;
 solve;
 let Entropy[a] := entropy;
 let TiltedEntropy[a] := tiltedentropy;
 let CodeLength[a] := codelength;
 let AvgAge[a] := avgage;
 let PAvgAge[a] := pracavgage;
-let LBAvgAge[a] := entropy/(1-epsilon)+(mu*entropy^2+mu*epsilon*entropy)/(2*((1-epsilon)^2-(1-epsilon)*mu*entropy));
-let UBAvgAge[a] := shannonage;
+let LBAvgAge[a] := 1.5*entropy-0.5;
+let UBAvgAge[a] := 1.5*entropy  + vare/(2*entropy)-0.5;
 let PShannonAge[a]:= pshannonage;
 let CheckOptimal[a]:=check_optimal;
 let CheckP[a]:=sum_p;
 let CheckTD[a]:=sum_td;
 
+
 }
-
-table Q7a OUT: [SV], Entropy, TiltedEntropy, CodeLength, AvgAge, PAvgAge, LBAvgAge, UBAvgAge, PShannonAge, CheckOptimal, CheckP, CheckTD;
-write table Q7a;
-
+table A3 OUT: [SV], Entropy, TiltedEntropy, CodeLength, AvgAge, PAvgAge, LBAvgAge, UBAvgAge,PShannonAge, CheckOptimal, CheckP  ;
+write table A3;

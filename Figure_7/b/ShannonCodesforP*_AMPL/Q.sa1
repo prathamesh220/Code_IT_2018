@@ -31,5 +31,5 @@ let CheckP[a]:=sum_p;
 let CheckTD[a]:=sum_td;
 
 }
-table QZS_op OUT: [SV], Entropy, TiltedEntropy, CodeLength, AvgAge, PAvgAge, LBAvgAge, UBAvgAge, PShannonAge, CheckOptimal, CheckP, CheckTD;
-write table QZS_op;
+table Q7b OUT: [SV], Entropy, TiltedEntropy, CodeLength, AvgAge, PAvgAge, LBAvgAge, UBAvgAge, PShannonAge, CheckOptimal, CheckP, CheckTD;
+write table Q7b;
