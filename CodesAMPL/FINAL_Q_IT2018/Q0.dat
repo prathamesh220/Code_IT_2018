@@ -1,0 +1,9 @@
+data;
+
+
+param cardinality := 256;
+
+for{a in I_1}{
+let  p[a] := 0.001980392156862745;
+}
+let p[cardinality] := 0.495;

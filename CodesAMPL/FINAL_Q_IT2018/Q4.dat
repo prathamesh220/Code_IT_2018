@@ -1,0 +1,9 @@
+data;
+
+
+param cardinality := 256;
+
+for{a in I_1}{
+let  p[a] := 9/(10*255);
+}
+let p[cardinality] := 1/10;
