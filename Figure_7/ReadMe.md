@@ -11,4 +11,4 @@ data Q.dat;
 
 commands Q.sa1;
 
-You should see a outful file Q7b.tab or Q7a.tab; 
+You should see a output file Q7b.tab or Q7a.tab; 
