@@ -10,3 +10,5 @@ model Q.mod;
 data Q.dat;
 
 commands Q.sa1;
+
+You should see a outful file Q7b.tab or Q7a.tab; 
